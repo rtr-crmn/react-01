@@ -6,7 +6,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const data = [ 1, 2, 3, 4 ];
+  const data = [ 1 ];
 
   console.log('App::render')
 
