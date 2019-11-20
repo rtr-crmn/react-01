@@ -1,15 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CounterActions from './CounterActions';
+import CounterActions from '../store/actions/CounterActions';
 
-import logo from './logo.svg';
-import './App.css';
-
-const { increment, decrement } = CounterActions;
+const { increment, decrement, reset } = CounterActions;
 
 function ValueComponent(props) {
-  const { data, name, counter, increment, decrement } = props;
+  const { data, name, counter, increment, decrement, reset } = props;
 
   console.log('ValueComponent::render', { data, name, counter })
 
@@ -22,15 +19,16 @@ function ValueComponent(props) {
       <div>
         <button onClick={e => increment()}>add</button>
         <button onClick={e => decrement()}>remove</button>
+        <button onClick={e => reset()}>reset</button>
       </div>
     </div>
   );
 }
 
-const mapStateToProps = (state /*, ownProps*/) => {
-  return { counter: state.counter }
-}
+const mapStateToProps = (state /*, ownProps*/) => ({ 
+  counter: state.counter 
+});
 
-const mapDispatchToProps = { increment, decrement /*, reset */ }
+const mapDispatchToProps = { increment, decrement, reset }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ValueComponent);

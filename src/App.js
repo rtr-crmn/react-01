@@ -1,6 +1,9 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
-import TestComponent from './TestComponent';
+import store from './store/store';
+
+import TestComponent from './components/TestComponent';
 
 import logo from './logo.svg';
 import './App.css';
@@ -11,11 +14,13 @@ function App() {
   console.log('App::render')
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <TestComponent values={data} />
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <header className="App-header">
+          <TestComponent values={data} />
+        </header>
+      </div>
+    </Provider>
   );
 }
 
