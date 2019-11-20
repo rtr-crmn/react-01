@@ -15,8 +15,14 @@ function ValueComponent(props) {
 
   return (
     <div className="App">
-        {data}: {name}, {counter}
-        <button onClick={e => increment()}>test</button>
+      <div>data: {data}</div>
+      <div>name: {name}</div>
+      <div>counter: {counter}</div>
+
+      <div>
+        <button onClick={e => increment()}>add</button>
+        <button onClick={e => decrement()}>remove</button>
+      </div>
     </div>
   );
 }
