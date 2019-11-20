@@ -27,9 +27,9 @@ function ValueComponent(props) {
   );
 }
 
-const mapStateToProps = (state /*, ownProps*/) => {
-  return { counter: state.counter }
-}
+const mapStateToProps = (state /*, ownProps*/) => ({ 
+  counter: state.counter 
+});
 
 const mapDispatchToProps = { increment, decrement /*, reset */ }
 
