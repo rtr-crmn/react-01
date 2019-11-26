@@ -5,7 +5,7 @@ import store from './store/store';
 
 import TestComponent from './components/TestComponent';
 
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 
 function App() {
