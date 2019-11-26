@@ -12,6 +12,8 @@ function ValueComponent(props) {
 
   return (
     <div className="App">
+      <div>ValueComponent</div>
+
       <div>data: {data}</div>
       <div>name: {name}</div>
       <div>counter: {counter}</div>
@@ -26,7 +28,7 @@ function ValueComponent(props) {
 }
 
 const mapStateToProps = (state /*, ownProps*/) => ({ 
-  counter: state.counter 
+  counter: state.counter.counter
 });
 
 const mapDispatchToProps = { increment, decrement, reset }

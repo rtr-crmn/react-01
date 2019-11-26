@@ -1,42 +1,27 @@
 import { select, call, put, takeEvery } from 'redux-saga/effects';
 
-import counterActions from '../store/actions/CounterActions';
-import { defaultState as counterDefaultState } from '../store/reducers/CounterReducer';
+import rateApiClient from '../adapters/RateApiClient';
 
-const { increment, decrement, reset, update, error } = counterActions;
+import rateActions from '../store/actions/RateActions';
 
-function* invoke({ payload }) {
-  const { amount } = payload;
-  
+const { invoke, success, error } = rateActions;
+
+function* request(action) {
   try {
 
-    const counter = yield select(state => state.counter);
+    //const counter = yield select(state => state.counter);
 
-    yield call(() => api));
+    const data = yield call(() => rateApiClient());
 
-    yield put(update(counter - amount));
+    yield put(success(data));
 
   } catch (e) {
     yield put(error(e));
   }
 }
 
-function* resetCounter(action) {
-  try {
-
-    const { counter } = counterDefaultState;
-
-    yield put(update(counter));
-
-  } catch (e) {
-    yield put(error(e));
-  }
+function* rateSaga() {
+  yield takeEvery(invoke, request);
 }
 
-function* counterSaga() {
-  yield takeEvery(increment, incrementCounter);
-  yield takeEvery(decrement, decrementCounter);
-  yield takeEvery(reset, resetCounter);
-}
-
-export default counterSaga;
+export default rateSaga;
