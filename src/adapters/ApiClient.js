@@ -5,7 +5,7 @@ import { defaultState as counterDefaultState } from '../store/reducers/CounterRe
 
 const { increment, decrement, reset, update, error } = counterActions;
 
-function* incrementCounter({ payload }) {
+function* invoke({ payload }) {
   const { amount } = payload;
   
   try {
@@ -25,6 +25,8 @@ function* decrementCounter({ payload }) {
   try {
 
     const counter = yield select(state => state.counter);
+
+    yield call(() => api));
 
     yield put(update(counter - amount));
 
