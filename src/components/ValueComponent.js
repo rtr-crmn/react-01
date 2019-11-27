@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import CounterActions from '../store/actions/CounterActions';
 
+import ValueContext from './ValueContext';
+
 const { increment, decrement, reset } = CounterActions;
 
 function ValueComponent(props) {
@@ -11,19 +13,24 @@ function ValueComponent(props) {
   console.log('ValueComponent::render', { data, name, counter })
 
   return (
-    <div className="App">
-      <div>ValueComponent</div>
+    <ValueContext.Consumer>
+      {(value) => (
+        <div className="App">
+          <div>ValueComponent</div>
 
-      <div>data: {data}</div>
-      <div>name: {name}</div>
-      <div>counter: {counter}</div>
+          <div>data: {data}</div>
+          <div>name: {name}</div>
+          <div>counter: {counter}</div>
+          <div>value: {value}</div>
 
-      <div>
-        <button onClick={e => increment()}>add</button>
-        <button onClick={e => decrement()}>remove</button>
-        <button onClick={e => reset()}>reset</button>
+          <div>
+            <button onClick={e => increment()}>add</button>
+            <button onClick={e => decrement()}>remove</button>
+            <button onClick={e => reset()}>reset</button>
+          </div>
       </div>
-    </div>
+      )}
+    </ValueContext.Consumer>
   );
 }
 

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 
 import store from './store/store';
 
+import ValueContext from './components/ValueContext';
 import TestComponent from './components/TestComponent';
 
 //import logo from './logo.svg';
@@ -17,7 +18,9 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <header className="App-header">
-          <TestComponent values={data} />
+          <ValueContext.Provider value={10}>
+            <TestComponent values={data} />
+          </ValueContext.Provider>
         </header>
       </div>
     </Provider>
